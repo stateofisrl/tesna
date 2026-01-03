@@ -107,9 +107,9 @@
                     <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
-                    Withdrawal History
+                    Recent Withdrawals
                 </h2>
-                <span class="text-sm text-gray-600 bg-gray-100 px-4 py-2 rounded-full font-medium">Last 50</span>
+                <span class="text-sm text-gray-600 bg-gray-100 px-4 py-2 rounded-full font-medium">Last 3</span>
             </div>
         </div>
         
@@ -214,8 +214,9 @@ function showInlineAlert(message, type) {
     const box = document.createElement('div');
     box.style.cssText = `background:${c.bg};border:2px solid ${c.border};border-radius:12px;padding:32px;max-width:500px;width:90%;text-align:center;box-shadow:0 20px 25px rgba(0,0,0,0.1)`;
     
+    const title = type === 'success' ? 'Success' : 'Error';
     box.innerHTML = `
-        <h2 style="color:${c.text};font-size:24px;font-weight:bold;margin:0 0 16px 0">Alert</h2>
+        <h2 style="color:${c.text};font-size:24px;font-weight:bold;margin:0 0 16px 0">${title}</h2>
         <p style="color:#374151;font-size:16px;margin:0 0 24px 0;line-height:1.5">${message}</p>
         <button id="alert-ok-btn" style="background:${c.btn};color:white;border:none;padding:12px 32px;border-radius:8px;font-weight:bold;cursor:pointer;font-size:16px;width:100%">OK</button>
     `;

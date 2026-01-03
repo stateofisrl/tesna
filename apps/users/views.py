@@ -317,7 +317,7 @@ def dashboard_view(request):
         })
     # Sort and limit
     transactions.sort(key=lambda x: x['created_at'], reverse=True)
-    transaction_history = transactions[:50]
+    transaction_history = transactions[:8]
     popup = request.session.pop('welcome_bonus_popup', None)
 
     # Account Summary statistics

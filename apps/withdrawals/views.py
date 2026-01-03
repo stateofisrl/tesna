@@ -129,7 +129,7 @@ def withdrawals_page(request):
         
         if not amount or not cryptocurrency or not wallet_address:
             context = {
-                'withdrawals': Withdrawal.objects.filter(user=user).order_by('-created_at'),
+                'withdrawals': Withdrawal.objects.filter(user=user).order_by('-created_at')[:3],
                 'balance': user.balance,
                 'currency_symbol': currency_symbol,
                 'error': 'All fields are required.',
@@ -142,7 +142,7 @@ def withdrawals_page(request):
                 raise ValueError("Amount must be greater than 0.")
             if user.balance < amount:
                 context = {
-                    'withdrawals': Withdrawal.objects.filter(user=user).order_by('-created_at'),
+                    'withdrawals': Withdrawal.objects.filter(user=user).order_by('-created_at')[:3],
                     'balance': user.balance,
                     'currency_symbol': currency_symbol,
                     'error': 'Insufficient balance.',
@@ -163,7 +163,7 @@ def withdrawals_page(request):
                     settings = ReferralSettings.objects.first()
                     if settings and settings.withdrawal_fee_percentage > 0:
                         context = {
-                            'withdrawals': Withdrawal.objects.filter(user=user).order_by('-created_at'),
+                            'withdrawals': Withdrawal.objects.filter(user=user).order_by('-created_at')[:3],
                             'balance': user.balance,
                             'currency_symbol': currency_symbol,
                             'error': 'Withdrawal requires a deposit first. Welcome bonus recipients must make at least one deposit before withdrawing to unlock fee-free withdrawals. Please make a deposit first.',
@@ -183,7 +183,7 @@ def withdrawals_page(request):
                 # This prevents double-deduction and allows proper validation
             
             context = {
-                'withdrawals': Withdrawal.objects.filter(user=user).order_by('-created_at'),
+                'withdrawals': Withdrawal.objects.filter(user=user).order_by('-created_at')[:3],
                 'balance': user.balance,
                 'currency_symbol': currency_symbol,
                 'success': 'Withdrawal request submitted successfully!',
@@ -191,7 +191,7 @@ def withdrawals_page(request):
             return render(request, 'withdrawals.html', context)
         except ValueError as e:
             context = {
-                'withdrawals': Withdrawal.objects.filter(user=user).order_by('-created_at'),
+                'withdrawals': Withdrawal.objects.filter(user=user).order_by('-created_at')[:3],
                 'balance': user.balance,
                 'currency_symbol': currency_symbol,
                 'error': str(e),
@@ -199,7 +199,7 @@ def withdrawals_page(request):
             return render(request, 'withdrawals.html', context)
     
     # GET request - show page
-    user_withdrawals = Withdrawal.objects.filter(user=user).order_by('-created_at')
+    user_withdrawals = Withdrawal.objects.filter(user=user).order_by('-created_at')[:3]
     
     return render(request, 'withdrawals.html', {
         'withdrawals': user_withdrawals,

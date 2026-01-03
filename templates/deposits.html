@@ -218,8 +218,9 @@ function showInlineAlert(message, type) {
     const box = document.createElement('div');
     box.style.cssText = `background:${c.bg};border:2px solid ${c.border};border-radius:12px;padding:32px;max-width:500px;width:90%;text-align:center;box-shadow:0 20px 25px rgba(0,0,0,0.1)`;
     
+    const title = type === 'success' ? 'Success' : 'Error';
     box.innerHTML = `
-        <h2 style="color:${c.text};font-size:24px;font-weight:bold;margin:0 0 16px 0">Alert</h2>
+        <h2 style="color:${c.text};font-size:24px;font-weight:bold;margin:0 0 16px 0">${title}</h2>
         <p style="color:#374151;font-size:16px;margin:0 0 24px 0;line-height:1.5">${message}</p>
         <button id="alert-ok-btn" style="background:${c.btn};color:white;border:none;padding:12px 32px;border-radius:8px;font-weight:bold;cursor:pointer;font-size:16px;width:100%">OK</button>
     `;
