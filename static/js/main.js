@@ -207,6 +207,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Test alert on deposits page
     if (window.location.pathname === '/deposits/') {
         // Uncomment below to test modal on page load
-        showAlertModal('This is a test alert!', 'success');
+        // showAlertModal('This is a test alert!', 'success');
     }
 });
