@@ -6,8 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
     <title>{% block title %}Tesla Investment Platform{% endblock %}</title>
     
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="{% static 'favicon.svg' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+    
     <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#1F2937">
+    <meta name="theme-color" content="#000000">
     <meta name="description" content="Tesla Investment Platform - Invest in your future">
     <meta name="mobile-web-app-capable" content="yes">
     
@@ -21,10 +27,10 @@
     <link rel="manifest" href="{% url 'manifest' %}">
     
     <!-- Apple Touch Icons -->
-    <link rel="apple-touch-icon" href="{% static 'images/icon-192x192.png' %}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'images/icon-152x152.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'images/icon-180x180.png' %}">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/icon-180x180.png' %}">
     <link rel="apple-touch-icon" sizes="192x192" href="{% static 'images/icon-192x192.png' %}">
+    <link rel="apple-touch-icon" sizes="512x512" href="{% static 'images/icon-512x512.png' %}">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
