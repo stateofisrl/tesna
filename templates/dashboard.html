@@ -120,7 +120,7 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
             <div class="text-center p-3 md:p-4 bg-blue-50 rounded-lg border border-blue-200">
                 <p class="text-xs md:text-sm text-gray-600 mb-1">Total Deposits</p>
-                <p class="text-lg md:text-2xl font-bold text-blue-600">{{ currency_symbol }}{{ total_deposits|floatformat:2 }}</p>
+                <p class="text-lg md:text-2xl font-bold text-blue-600">{% currency_display total_deposits %}</p>
             </div>
             <div class="text-center p-3 md:p-4 bg-purple-50 rounded-lg border border-purple-200">
                 <p class="text-xs md:text-sm text-gray-600 mb-1">Active Plans</p>
@@ -128,11 +128,11 @@
             </div>
             <div class="text-center p-3 md:p-4 bg-orange-50 rounded-lg border border-orange-200">
                 <p class="text-xs md:text-sm text-gray-600 mb-1">Total Withdrawn</p>
-                <p class="text-lg md:text-2xl font-bold text-orange-600">{{ currency_symbol }}{{ total_withdrawn|floatformat:2 }}</p>
+                <p class="text-lg md:text-2xl font-bold text-orange-600">{% currency_display total_withdrawn %}</p>
             </div>
             <div class="text-center p-3 md:p-4 bg-teal-50 rounded-lg border border-teal-200">
                 <p class="text-xs md:text-sm text-gray-600 mb-1">Referral Earnings</p>
-                <p class="text-lg md:text-2xl font-bold text-teal-600">{{ currency_symbol }}{{ referral_earnings|floatformat:2 }}</p>
+                <p class="text-lg md:text-2xl font-bold text-teal-600">{% currency_display referral_earnings %}</p>
             </div>
         </div>
     </div>
