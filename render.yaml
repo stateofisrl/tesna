@@ -88,5 +88,4 @@ databases:
   - name: tesla-giveaway-db
     databaseName: giveaway_platform
     user: giveaway_user
-    plan: starter  # $7/month - 256 MB RAM, 1 GB storage
     region: oregon
