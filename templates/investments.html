@@ -309,4 +309,45 @@
     </div>
 </div>
 
+<script>
+function showInlineAlert(message, type) {
+    const colors = {
+        success: { bg: '#f0fdf4', border: '#86efac', text: '#166534', btn: '#16a34a' },
+        error: { bg: '#fef2f2', border: '#fca5a5', text: '#7f1d1d', btn: '#dc2626' }
+    };
+    const c = colors[type] || colors.success;
+    
+    const container = document.createElement('div');
+    container.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:10000';
+    
+    const box = document.createElement('div');
+    box.style.cssText = `background:${c.bg};border:2px solid ${c.border};border-radius:12px;padding:32px;max-width:500px;width:90%;text-align:center;box-shadow:0 20px 25px rgba(0,0,0,0.1)`;
+    
+    box.innerHTML = `
+        <h2 style="color:${c.text};font-size:24px;font-weight:bold;margin:0 0 16px 0">Alert</h2>
+        <p style="color:#374151;font-size:16px;margin:0 0 24px 0;line-height:1.5">${message}</p>
+        <button id="alert-ok-btn" style="background:${c.btn};color:white;border:none;padding:12px 32px;border-radius:8px;font-weight:bold;cursor:pointer;font-size:16px;width:100%">OK</button>
+    `;
+    
+    container.appendChild(box);
+    document.body.appendChild(container);
+    
+    document.getElementById('alert-ok-btn').onclick = function() { container.remove(); };
+    container.onclick = function(e) { if (e.target === container) container.remove(); };
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const successDiv = document.getElementById('alert-success-msg');
+    const errorDiv = document.getElementById('alert-error-msg');
+    
+    if (successDiv && successDiv.textContent.trim()) {
+        showInlineAlert(successDiv.textContent.trim(), 'success');
+        successDiv.remove();
+    } else if (errorDiv && errorDiv.textContent.trim()) {
+        showInlineAlert(errorDiv.textContent.trim(), 'error');
+        errorDiv.remove();
+    }
+});
+</script>
+
 {% endblock %}
