@@ -15,6 +15,9 @@ from apps.withdrawals.views import withdrawals_page
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
+from django.http import JsonResponse
+import json
+import os
 
 # Root redirects to login/register when anonymous, otherwise to dashboard
 def root_view(request):
@@ -22,8 +25,17 @@ def root_view(request):
         return redirect('dashboard')
     return redirect('login')
 
+# Serve manifest.json for PWA
+def manifest_view(request):
+    manifest_path = os.path.join(settings.BASE_DIR, 'static', 'manifest.json')
+    with open(manifest_path, 'r') as f:
+        manifest_data = json.load(f)
+    return JsonResponse(manifest_data, content_type='application/manifest+json')
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # PWA manifest
+    path('manifest.json', manifest_view, name='manifest'),
     # Frontend template routes
     path('', root_view, name='home'),
     path('dashboard/', dashboard_view, name='dashboard'),
